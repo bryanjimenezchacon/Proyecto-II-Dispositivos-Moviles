@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="ga_trackingId">UA-77554303-2</string>
+
+    <integer name="ga_sessionTimeout">300</integer>
+    <string name="ga_sampleFrequency">100.0</string>
+
+    <bool name="ga_autoActivityTracking">true</bool>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+
+    <screenName name=".MainActivity">MainActivity</screenName>
+
+    <screenName name=".Adultos.MenuJovenes">MenuJovenes</screenName>
+    <screenName name=".AdultosMayores.MenuAdultos">MenuAdultos</screenName>
+    <screenName name=".Jovenes.MenuAdultosMayores">MenuAdultosMayores</screenName>
+</PreferenceScreen>
