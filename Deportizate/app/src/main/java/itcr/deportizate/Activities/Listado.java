@@ -76,7 +76,9 @@ public class Listado extends AppCompatActivity {
         if(per.equals("AMayor")){
             titulo.setText("Menú de " + tip + " para Adultos Mayores");
         }
-        }catch (Exception e){}
+        }catch (Exception e){
+            titulo.setText("Menú de Ejercicios de Rutina");
+        }
 
 
         if(extras.getString("Tipo") != null) {
