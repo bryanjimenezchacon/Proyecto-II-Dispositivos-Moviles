@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -38,8 +39,9 @@ public class RutinaActivity extends AppCompatActivity {
         String[] values;
         Bundle extras = getIntent().getExtras();
         persona = extras.getString("Persona");
-
+        TextView titulo = (TextView) findViewById(R.id.textViewRutina);
         if(persona.equals("AMayor")){
+            titulo.setText("Rutinas para Adultos Mayores");
             values = new String[] {"Rutina de Brazos","Rutina de Piernas"};
             rutina_brazos = new ArrayList<Integer>(Arrays.asList(13,43,37,10,59,60,61,63));
             rutina_pecho = new ArrayList<Integer>();
@@ -47,6 +49,8 @@ public class RutinaActivity extends AppCompatActivity {
             rutina_piernas = new ArrayList<Integer>(Arrays.asList(40,31,19,3,65,66,67));
         }
         else if(persona.equals("Joven")){
+            titulo.setText("Rutinas para Jóvenes");
+
             values = new String[] {"Rutina de Brazos","Rutina de Pecho","Rutina de Espalda","Rutina de Piernas"};
             rutina_brazos = new ArrayList<Integer>(Arrays.asList(8,11,20,4,57,99,91,97));
             rutina_pecho = new ArrayList<Integer>(Arrays.asList(25,35,41,4,55,92,93));
@@ -54,6 +58,8 @@ public class RutinaActivity extends AppCompatActivity {
             rutina_piernas = new ArrayList<Integer>(Arrays.asList(6,16,53,1,55,94,103,87,101));
         }
         else{
+            titulo.setText("Rutinas para Adultos");
+
             values = new String[] {"Rutina de Brazos","Rutina de Pecho","Rutina de Espalda","Rutina de Piernas"};
             rutina_brazos = new ArrayList<Integer>(Arrays.asList(11,8,20,4,55,91,97,99));
             rutina_pecho = new ArrayList<Integer>(Arrays.asList(35,41,25,55,4,92,93));

@@ -12,18 +12,20 @@
     >
     <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:id="@+id/CalentamientoButton"
-        android:background="@drawable/calentamientofuego" />
+        android:background="@drawable/calentamientofuego"
+        android:layout_below="@+id/textViewMenu" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/EstiramientoButton"
         android:background="@drawable/estiramiento"
-        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/CalentamientoButton"
-        android:layout_toEndOf="@+id/CalentamientoButton" />
+        android:layout_toEndOf="@+id/CalentamientoButton"
+        android:layout_alignTop="@+id/CalentamientoButton"
+        android:layout_above="@+id/EjerciciosButton" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -36,8 +38,16 @@
 
     <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/RutinasButton"
         android:background="@drawable/rutina"
         android:layout_below="@+id/EjerciciosButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewMenu"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

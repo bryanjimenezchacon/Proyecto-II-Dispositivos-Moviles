@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import itcr.deportizate.AnalyticsTracker;
 import itcr.deportizate.DBHandler;
@@ -24,11 +26,15 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         analyticsTracker = AnalyticsTracker.getAnalyticsTracker(this.getApplicationContext());
         dbHandler = new DBHandler(this);
+        TextView titulo = (TextView) findViewById(R.id.textViewMenu);
+
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
                 persona = "Adulto";
+                titulo.setText("Menú para Adultos");
+
             } else {
                 persona = extras.getString("persona");
             }
@@ -48,6 +54,20 @@ public class Menu extends AppCompatActivity {
         ImageButton Menu_Estiramiento = (ImageButton) findViewById(R.id.EstiramientoButton);
         ImageButton Menu_Ejercicio = (ImageButton) findViewById(R.id.EjerciciosButton);
         ImageButton Menu_Rutina = (ImageButton) findViewById(R.id.RutinasButton);
+
+        TextView titulo = (TextView) findViewById(R.id.textViewMenu);
+        Bundle extras = getIntent().getExtras();
+        String per = extras.getString("persona");
+        if(per.equals("Joven")){
+
+            titulo.setText("Menú para Jóvenes");
+        }
+        if(per.equals("Adulto")){
+            titulo.setText("Menú para Adultos");
+        }
+        if(per.equals("AMayor")){
+            titulo.setText("Menú para Adultos Mayores");
+        }
 
         Menu_Rutina.setOnClickListener(new View.OnClickListener() {
             @Override

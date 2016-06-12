@@ -37,7 +37,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_margin="20dp"
-            android:foregroundGravity="center" />
+            android:foregroundGravity="center|center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,9 +77,13 @@
             android:layout_height="wrap_content"
             android:text="Empezar"
             android:id="@+id/buttonEmpezar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/buttonRegistrar"
+
             android:layout_below="@+id/dt_desc_ejercicio"
-            android:layout_centerHorizontal="true"
-            android:foregroundGravity="center" />
+            android:layout_toRightOf="@+id/buttonRegistrar"
+            android:layout_toEndOf="@+id/buttonRegistrar" />
 
             <TableLayout
                 android:stretchColumns="0,1"
@@ -102,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Fecha"
+                        android:gravity="center"
                         android:id="@+id/textViewFecha"
                         android:foregroundGravity="fill_horizontal|center|center_horizontal" />
 
@@ -110,10 +115,21 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Repeticiones"
+                        android:gravity="center"
                         android:id="@+id/textViewRepeticiones"
                         android:foregroundGravity="fill_horizontal|center|center_horizontal" />
                 </TableRow>
             </TableLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrar Repeticiones"
+                android:id="@+id/buttonRegistrar"
+                android:layout_below="@+id/dt_desc_ejercicio"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
     </ScrollView>

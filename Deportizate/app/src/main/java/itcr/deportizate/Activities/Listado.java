@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -61,6 +62,23 @@ public class Listado extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
+        String per = extras.getString("Persona");
+        String tip = extras.getString("Tipo");
+        TextView titulo = (TextView) findViewById(R.id.textViewListado);
+        try{
+        if(per.equals("Joven")){
+
+            titulo.setText("Menú de " + tip + " para Jóvenes");
+        }
+        if(per.equals("Adulto")){
+            titulo.setText("Menú de " + tip + " para Adultos");
+        }
+        if(per.equals("AMayor")){
+            titulo.setText("Menú de " + tip + " para Adultos Mayores");
+        }
+        }catch (Exception e){}
+
+
         if(extras.getString("Tipo") != null) {
             popularListView();
         } else {

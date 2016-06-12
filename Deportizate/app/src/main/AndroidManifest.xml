@@ -85,6 +85,9 @@
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.RutinaActivity"></activity>
+        <service
+            android:name=".MyService"
+            android:process=":remote" />
     </application>
 
 </manifest>

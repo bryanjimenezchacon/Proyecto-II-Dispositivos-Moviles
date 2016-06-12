@@ -51,6 +51,7 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
 
         final TextView textViewCronos= (TextView)findViewById(R.id.textViewCrono);
         Button empezar = (Button)findViewById(R.id.buttonEmpezar);
+        Button registrar = (Button)findViewById(R.id.buttonRegistrar);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -83,17 +84,21 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
                         Toast.makeText(ActividadFisica.this, "Descanse 10 seg para continuar", Toast.LENGTH_LONG).show();
                         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.objetivologrado);
                         mediaPlayer.start();
-                        DialogRepeticiones dialogo = new DialogRepeticiones();
-                        dialogo.show(getFragmentManager(), "DialogRepeticiones");
 
                     }
                 }.start();
             }
         });
 
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                        DialogRepeticiones dialogo = new DialogRepeticiones();
+                        dialogo.show(getFragmentManager(), "DialogRepeticiones");
 
-
+            }
+        });
 
     }
 
@@ -106,6 +111,7 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
         listaRepeticiones =  dbHandler.getRepeticiones(ejercicio);
         try{
         //Toast.makeText(ActividadFisica.this, "Entre a RellenarTabla", Toast.LENGTH_SHORT).show();
+            if (dbHandler.getRepeticionesTotal(ejercicio) != 0){
         for (int i = 0; i < dbHandler.getRepeticionesTotal(ejercicio); i++){
 
             TableRow fila = new TableRow(this);
@@ -126,8 +132,11 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
             tabla.addView(fila);
 
         }
-        }catch (Exception e){
-           // Toast.makeText(ActividadFisica.this, "Error" + e, Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(ActividadFisica.this, "No hay repeticiones registradas para esta actividad :(", Toast.LENGTH_SHORT).show();
+            }
+            }catch (Exception e){
+            Toast.makeText(ActividadFisica.this, "No hay repeticiones registradas para esta actividad :(", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -149,6 +158,7 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
             repeticion.setFechaHoy();
           //  Toast.makeText(ActividadFisica.this, repeticion.getFecha(), Toast.LENGTH_SHORT).show();
             dbHandler.addRepeticion(repeticion);
+            Toast.makeText(this, "Repeticiones Guardadas", Toast.LENGTH_SHORT).show();
         } catch(NumberFormatException e) {
             Toast.makeText(this, "Debe ingresar un número entero.", Toast.LENGTH_LONG).show();
             DialogRepeticiones dialogo = new DialogRepeticiones();
@@ -161,5 +171,23 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
             Toast.makeText(this, "Negativo", Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        try{
+        mediaPlayer.stop();
+        }catch (Exception e){
+        }
+        super.onBackPressed();
+    }
+    @Override
+    public void onPause() {
 
+        try{
+            mediaPlayer.stop();
+        }catch (Exception e){
+        }
+        super.onPause();
+
+    }
 }

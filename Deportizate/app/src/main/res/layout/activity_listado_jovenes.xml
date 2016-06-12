@@ -14,12 +14,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/tableLayout"
+        android:layout_below="@+id/textViewListado">
 
         <ListView
             android:id="@+id/contacts_list_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewListado"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>
