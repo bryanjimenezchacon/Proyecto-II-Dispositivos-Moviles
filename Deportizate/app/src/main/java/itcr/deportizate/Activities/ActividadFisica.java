@@ -33,9 +33,12 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
     ImageView img;
     TextView txt_nombre;
     TextView txt_desc;
+    private boolean timerHasStarted = false;
     int tiempo = 30;
     DBHandler dbHandler;
+    int modo = 0;
     private List<Repeticion> listaRepeticiones;
+
 
 
     @Override
@@ -70,6 +73,8 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
         empezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!timerHasStarted){
+                    timerHasStarted = true;
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.tiempo);
 
                 new CountDownTimer(tiempo * 1000, 1000) {
@@ -81,12 +86,14 @@ public class ActividadFisica extends AppCompatActivity implements DialogRepetici
 
                     public void onFinish() {
                         textViewCronos.setText("LISTO!");
+                        timerHasStarted = false;
                         Toast.makeText(ActividadFisica.this, "Descanse 10 seg para continuar", Toast.LENGTH_LONG).show();
                         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.objetivologrado);
                         mediaPlayer.start();
 
                     }
                 }.start();
+                }
             }
         });
 
